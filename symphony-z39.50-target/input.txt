@@ -9,7 +9,7 @@
 # (3) Performing the Z39.50 query beforehand reveals that there are 2,620
 # records returned, so the commands below are structured to return all 2,620
 # records in 100-record increments.
-# (4) The YAZ toolkit with the yaz-client utility can be downloaded from Index
+# (4) The YAZ toolkit with the yaz-client C utility can be downloaded from Index
 # Data's YAZ website: https://www.indexdata.com/resources/software/yaz/
 #
 open ualapp.library.ualberta.ca:2200/Unicorn
