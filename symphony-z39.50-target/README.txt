@@ -9,9 +9,9 @@ Description: This directory contains files that are used in the process to query
 the SirsiDynix Symphony Z39.50 target server to retrieve the bibliographic
 records for MacEwan University Library print music scores.
 
-The YAZ toolkit (https://www.indexdata.com/resources/software/yaz/) yaz-client
-(https://software.indexdata.com/yaz/doc/yaz-client.html), a Z39.50/SRU client,
-is used to query the UAL Symphony Z39.50 target.
+The YAZ toolkit's (https://www.indexdata.com/resources/software/yaz/) yaz-client
+(https://software.indexdata.com/yaz/doc/yaz-client.html) C utility, a
+Z39.50/SRU client, is used to query the UAL Symphony Z39.50 target.
 
 To run the command to produce an output file of MARC 21 binary format records,
 type this command at the command prompt:
