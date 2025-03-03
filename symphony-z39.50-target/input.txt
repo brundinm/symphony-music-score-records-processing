@@ -1,0 +1,45 @@
+# yaz-client command file to query the UAL Z39.50 target and database
+#
+# Notes:
+# (1) Find query uses Index Data's Z39.50 type-1 query using the Z39.50
+# protocol, which is a PQF/PQN (Prefix Query Format / Prefix Query Notation)
+# query that uses RPN (Reverse Polish Notation) in the query formulation.
+# (2) The @attr 1=1016 "AEGMCT" and @attr 1=101"AVAIL_SOON" attributes are
+# redundant and not needed, but I included them anyway in the find query.
+# (3) Performing the Z39.50 query beforehand reveals that there are 2,620
+# records returned, so the commands below are structured to return all 2,620
+# records in 100-record increments.
+# (4) The YAZ toolkit with the yaz-client utility can be downloaded from Index
+# Data's YAZ website: https://www.indexdata.com/resources/software/yaz/
+#
+open ualapp.library.ualberta.ca:2200/Unicorn
+format marc21
+find @or @or @and @and @attr 1=1016 "AEGMCT" @attr 1=1016 "AVAIL_SOON" @attr 1=1016 "GMCA-MU-SC" @attr 1=1016 "GMJP-MU-SC" @attr 1=1016 "GMCT-OS-MS"
+show 1 +100 +1
+show 101 +100 +1
+show 201 +100 +1
+show 301 +100 +1
+show 401 +100 +1
+show 501 +100 +1
+show 601 +100 +1
+show 701 +100 +1
+show 801 +100 +1
+show 901 +100 +1
+show 1001 +100 +1
+show 1101 +100 +1
+show 1201 +100 +1
+show 1301 +100 +1
+show 1401 +100 +1
+show 1501 +100 +1
+show 1601 +100 +1
+show 1701 +100 +1
+show 1801 +100 +1
+show 1901 +100 +1
+show 2001 +100 +1
+show 2101 +100 +1
+show 2201 +100 +1
+show 2301 +100 +1
+show 2401 +100 +1
+show 2501 +100 +1
+show 2601 +19 +1
+exit

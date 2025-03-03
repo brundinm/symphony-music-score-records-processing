@@ -1,0 +1,153 @@
+MARC records for print music scores notes
+-----------------------------------------
+
+* EBSCO Discovery Service (EDI) API query
+https://search.ebscohost.com/login.aspx?custid={CustomerID}&groupid={Group}&profile={Profile}
+* EBSCOhost API query
+http://eit.ebscohost.com/Services/SearchService.asmx/Search?prof=[Your EIT Profile ID]&pwd=[Your Profile Password]&query=[Your Search Query]&db=[Database to Search]
+
+* SirsiDynix Symphony Workflows client search
+
+* Web search
+- 5,864 print scores with wildcard search"*" and limited to Source Type "Music
+Scores" and Location "MacEwan University"
+- 5,822 print scores with search term "music" and limited to Source Type "Music
+Scores" and Location "MacEwan University
+- 4,083 print scores with subject search term "music" and limited to Source
+Type "Music Scores" and Location "MacEwan University"
+
+- Score information (Z39.50):
+- LDR/06 "c" and LDR/07 "m", 300$a "1 score", 348$a "score", 650$v "Scores.",
+926$d "MUSICSCORE", 949$h "GMCA-MU-SC", 949$h "GMJP-MU-SC", 949$h "GMCT-OS-MS"
+
+MUSICSCORE: 1,962
+GMCA-MU-SC: 1,197
+GMJP-MU-SC: 896
+GMCT-OS-MS: 30
+
+- Location information (Z39.50):
+- 090$b "AEGMCT", 926$a "GR_MACEWAN", 926$b "ON_SHELF", 949$k "AVAIL_SOON"
+
+- Useful MARC fields indexed by Z39.50 1016 "Any" attribute:
+090, 300, 650, and 949
+
+- Symphony Z39.50 Use attributes, doesn't support 1=1001 "Record Type" (so "c"
+for "Notated music", nor 1=1031 "Material Type" (so "Score"), etc.
+
+open ualapp.library.ualberta.ca:2200/Unicorn
+format marc
+find @or @or @and @and @attr 1=1016 "AEGMCT" @attr 1=1016 "AVAIL_SOON" @attr 1=1016 "GMCA-MU-SC" @attr 1=1016 "GMJP-MU-SC" @attr 1=1016 "GMCT-OS-MS"
+show 1 +100 +1
+quit
+
+2,620 records from above query
+
+yaz-client -f input.txt -m output.mrc -t utf-8
+yaz-client -f input.txt -t utf-8 | tee output.txt
+
+* Sample MARC record for print music score in MacEwan University Library
+
+- from our Symphony MARC record dump
+
+=LDR  02193ccm a2200505 i 4500
+=001  9183947
+=003  SIRSI
+=005  20200911092622.0
+=008  200819s2020\\\\wiubll\\\\\\\\\n\\\\eng\d
+=020  \\$a1540082261$q(pbk.)
+=020  \\$a9781540082268$q(pbk.)
+=024  10$a840126900132
+=028  32$aHL00327968$bHal Leonard
+=028  30$a00327968$bHal Leonard
+=040  \\$aCDX$beng$erda$cCDX$dCDX
+=050  \4$aM1630.18.K515$bD67 2020
+=082  04$a787.87/1643$223
+=090  \\$aM1630.18 .K515 D67 2020$bAEGMCT
+=100  1\$aKing, Marcus,$d1996-$ecomposer,$elyricist.
+=245  13$aEl Dorado /$c[Marcus King] ; music transcriptions by Pete Billmann, Adonai Booth, Jeff Jacobson and Ron Piccione.
+=246  3\$aMarcus King, El Dorado
+=264  \1$aMilwaukee, WI :$bHal Leonard,$c[2020]
+=300  \\$a1 score (127 pages) ;$c31 cm.
+=336  \\$anotated music$bntm$2rdacontent
+=337  \\$aunmediated$bn$2rdamedia
+=338  \\$avolume$bnc$2rdacarrier
+=382  \\$asinger$n1$aguitar$n2$2lcmpt
+=490  1\$aGuitar recorded versions : authentic transcriptions with notes and tablature
+=500  \\$a"Concord Music Publishing"--Page 4 of cover.
+=500  \\$aFor voice and guitars, in staff notation and tablature; with chord symbols.
+=505  0\$aYoung man's dream -- The well -- Wildflowers & wine -- One day she's here -- Sweet Mariona -- Beautiful stranger -- Break -- Say you will -- Turn it up -- Too much whiskey -- Love song -- No pain -- Guitar notation legend.
+=546  \\$bStaff notation;$bChord symbols;$bTablature.
+=596  \\$a29
+=650  \0$aRock music$y2011-2020$vScores.
+=650  \0$aBlues-rock music$vScores.
+=650  \0$aGuitar music (Blues)$vScores.
+=650  \0$aGuitar music (Rock)$vScores.
+=700  1\$aBillmann, Pete,$etranscriber.
+=700  1\$aBooth, Addi,$etranscriber.
+=700  1\$aJacobson, Jeff,$etranscriber.
+=700  1\$aPiccione, Ron,$etranscriber.
+=830  \0$aHal Leonard guitar recorded versions.
+=949  \\$aM1630.18 .K515 D67 2020$hGMCT-OS-MS$i1008043109$p29.90$kAVAIL_SOON
+=348  \\$ascore$2rdafnm
+=999  \\$aM1630.18 .K515 D67 2020$wLC$c1$i1008043109$lON_SHELF$mGR_MACEWAN$p{dollar}29.90$rY$sY$tMUSICSCORE$u9/15/2020
+
+* - from a Symphony Z39.50 query using yaz-client
+
+[UNICORN]Record type: USmarc
+02152ccm a2200505 i 4500
+001 9183947
+003 CaAEU
+005 20200911092622.0
+008 200819s2020    wiubll         n    eng d
+020    $a 1540082261 $q (pbk.)
+020    $a 9781540082268 $q (pbk.)
+024 10 $a 840126900132
+028 32 $a HL00327968 $b Hal Leonard
+028 30 $a 00327968 $b Hal Leonard
+040    $a CDX $b eng $e rda $c CDX $d CDX
+050  4 $a M1630.18.K515 $b D67 2020
+082 04 $a 787.87/1643 $2 23
+090    $a M1630.18 .K515 D67 2020 $b AEGMCT
+100 1  $a King, Marcus, $d 1996- $e composer, $e lyricist.
+245 13 $a El Dorado / $c [Marcus King] ; music transcriptions by Pete Billmann, Adonai Booth, Jeff Jacobson and Ron Piccione.
+246 3  $a Marcus King, El Dorado
+264  1 $a Milwaukee, WI : $b Hal Leonard, $c [2020]
+300    $a 1 score (127 pages) ; $c 31 cm.
+336    $a notated music $b ntm $2 rdacontent
+337    $a unmediated $b n $2 rdamedia
+338    $a volume $b nc $2 rdacarrier
+382    $a singer $n 1 $a guitar $n 2 $2 lcmpt
+490 1  $a Guitar recorded versions : authentic transcriptions with notes and tablature
+500    $a "Concord Music Publishing"--Page 4 of cover.
+500    $a For voice and guitars, in staff notation and tablature; with chord symbols.
+505 0  $a Young man's dream -- The well -- Wildflowers & wine -- One day she's here -- Sweet Mariona -- Beautiful stranger -- Break -- Say you will -- Turn it up -- Too much whiskey -- Love song -- No pain -- Guitar notation legend.
+546    $b Staff notation; $b Chord symbols; $b Tablature.
+596    $a 29
+650  0 $a Rock music $y 2011-2020 $v Scores.
+650  0 $a Blues-rock music $v Scores.
+650  0 $a Guitar music (Blues) $v Scores.
+650  0 $a Guitar music (Rock) $v Scores.
+700 1  $a Billmann, Pete, $e transcriber.
+700 1  $a Booth, Addi, $e transcriber.
+700 1  $a Jacobson, Jeff, $e transcriber.
+700 1  $a Piccione, Ron, $e transcriber.
+830  0 $a Hal Leonard guitar recorded versions.
+949    $a M1630.18 .K515 D67 2020 $h GMCT-OS-MS $i 1008043109 $p 29.90 $k AVAIL_SOON
+348    $a score $2 rdafnm
+926    $a GR_MACEWAN $b ON_SHELF $c M1630.18 .K515 D67 2020 $d MUSICSCORE $f 1
+
+***
+
+Title, Author(s), Publication information, Series, Notes, Contents, Physical
+description, Subjects, Call number, Format
+
+TI El Dorado / [Marcus King] ; music transcriptions by Pete Billmann, Adonai Booth, Jeff Jacobson and Ron Piccione.
+AU King, Marcus, composer, lyricist.
+PU Milwaukee, WI : Hal Leonard, [2020]
+SE Guitar recorded versions : authentic transcriptions with notes and tablature Hal Leonard guitar recorded versions.
+NO "Concord Music Publishing"--Page 4 of cover. For voice and guitars, in staff notation and tablature; with chord symbols. Staff notation; Chord symbols; Tablature.
+CO Young man's dream -- The well -- Wildflowers & wine -- One day she's here -- Sweet Mariona -- Beautiful stranger -- Break -- Say you will -- Turn it up -- Too much whiskey -- Love song -- No pain -- Guitar notation legend.
+PH 1 score (127 pages) ; 31 cm.
+SU Rock music 2011-2020; Blues-rock music; Guitar music (Blues); Guitar music (Rock)
+CA M1630.18 .K515 D67 2020
+FO MUSICSCORE
